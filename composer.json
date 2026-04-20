@@ -1,5 +1,17 @@
 {
+    "name": "tienda/inventarios",
+    "description": "Sistema de Gestión de Inventarios con Arquitectura MVC",
+    "type": "project",
     "require": {
-        "sergeytsalkov/meekrodb": "^3.1"
+        "php": ">=7.4",
+        "meekrodb/meekrodb": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true
     }
 }

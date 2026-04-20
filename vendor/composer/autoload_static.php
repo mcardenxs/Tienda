@@ -6,7 +6,33 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit0fb98b59d37122f267e964db1f7466bb
 {
+    public static $prefixLengthsPsr4 = array (
+        'A' => 
+        array (
+            'App\\' => 4,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
+        ),
+    );
+
     public static $classMap = array (
+        'App\\Config\\Database' => __DIR__ . '/../..' . '/src/Config/Database.php',
+        'App\\Controllers\\AuthController' => __DIR__ . '/../..' . '/src/Controllers/AuthController.php',
+        'App\\Controllers\\ClienteController' => __DIR__ . '/../..' . '/src/Controllers/ClienteController.php',
+        'App\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/src/Controllers/DashboardController.php',
+        'App\\Controllers\\ProductoController' => __DIR__ . '/../..' . '/src/Controllers/ProductoController.php',
+        'App\\Core\\Controller' => __DIR__ . '/../..' . '/src/Core/Controller.php',
+        'App\\Core\\Model' => __DIR__ . '/../..' . '/src/Core/Model.php',
+        'App\\Core\\Router' => __DIR__ . '/../..' . '/src/Core/Router.php',
+        'App\\Core\\Session' => __DIR__ . '/../..' . '/src/Core/Session.php',
+        'App\\Models\\ClienteModel' => __DIR__ . '/../..' . '/src/Models/ClienteModel.php',
+        'App\\Models\\ProductoModel' => __DIR__ . '/../..' . '/src/Models/ProductoModel.php',
+        'App\\Models\\UsuarioModel' => __DIR__ . '/../..' . '/src/Models/UsuarioModel.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'DB' => __DIR__ . '/..' . '/sergeytsalkov/meekrodb/db.class.php',
         'DBTransaction' => __DIR__ . '/..' . '/sergeytsalkov/meekrodb/db.class.php',
@@ -25,6 +51,8 @@ class ComposerStaticInit0fb98b59d37122f267e964db1f7466bb
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInit0fb98b59d37122f267e964db1f7466bb::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit0fb98b59d37122f267e964db1f7466bb::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInit0fb98b59d37122f267e964db1f7466bb::$classMap;
 
         }, null, ClassLoader::class);

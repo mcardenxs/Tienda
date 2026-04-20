@@ -6,6 +6,18 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Config\\Database' => $baseDir . '/src/Config/Database.php',
+    'App\\Controllers\\AuthController' => $baseDir . '/src/Controllers/AuthController.php',
+    'App\\Controllers\\ClienteController' => $baseDir . '/src/Controllers/ClienteController.php',
+    'App\\Controllers\\DashboardController' => $baseDir . '/src/Controllers/DashboardController.php',
+    'App\\Controllers\\ProductoController' => $baseDir . '/src/Controllers/ProductoController.php',
+    'App\\Core\\Controller' => $baseDir . '/src/Core/Controller.php',
+    'App\\Core\\Model' => $baseDir . '/src/Core/Model.php',
+    'App\\Core\\Router' => $baseDir . '/src/Core/Router.php',
+    'App\\Core\\Session' => $baseDir . '/src/Core/Session.php',
+    'App\\Models\\ClienteModel' => $baseDir . '/src/Models/ClienteModel.php',
+    'App\\Models\\ProductoModel' => $baseDir . '/src/Models/ProductoModel.php',
+    'App\\Models\\UsuarioModel' => $baseDir . '/src/Models/UsuarioModel.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'DB' => $vendorDir . '/sergeytsalkov/meekrodb/db.class.php',
     'DBTransaction' => $vendorDir . '/sergeytsalkov/meekrodb/db.class.php',

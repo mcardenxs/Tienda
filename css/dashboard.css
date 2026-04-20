@@ -22,14 +22,22 @@
 .sidebar .nav-link {
   font-size: .875rem;
   font-weight: 500;
+  color: #4B5563;
+}
+
+.sidebar .nav-link:hover {
+  color: #7C3AED;
 }
 
 .sidebar .nav-link.active {
-  color: #2470dc;
+  color: #7C3AED;
+  background-color: #EDE9FE;
+  border-left: 3px solid #7C3AED;
 }
 
 .sidebar-heading {
   font-size: .75rem;
+  color: #9CA3AF;
 }
 
 /*
@@ -39,10 +47,33 @@
 .navbar-brand {
   padding-top: .75rem;
   padding-bottom: .75rem;
-  background-color: rgba(0, 0, 0, .25);
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+  color: #7C3AED !important;
+  font-weight: 700;
+  background-color: transparent !important;
+  box-shadow: none;
 }
 
 .navbar .form-control {
   padding: .75rem 1rem;
 }
+
+/* Sidebar background */
+.sidebar {
+  background-color: white;
+  border-right: 1px solid #E5E7EB;
+}
+
+/* Main area background */
+main {
+  background-color: #F9FAFB;
+}
+
+/* Text colors */
+.text-muted {
+  color: #9CA3AF !important;
+}
+
+.text-body-secondary {
+  color: #9CA3AF !important;
+}
+

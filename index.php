@@ -10,7 +10,9 @@
   <script src="../assets/js/color-modes.js"></script>
   <link href="./css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <meta name="theme-color" content="#712cf9" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#7C3AED" />
+  <link href="./css/modern.css" rel="stylesheet" />
   <link href="./css/dashboard.css" rel="stylesheet" />
   <script src="./js/jquery-4.0.0.js"></script>
   <script src="./js/funciones.js?v=5"></script>
@@ -70,19 +72,19 @@
     }
 
     .btn-bd-primary {
-      --bd-violet-bg: #712cf9;
-      --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+      --bd-violet-bg: #7C3AED;
+      --bd-violet-rgb: 124, 58, 237;
       --bs-btn-font-weight: 600;
       --bs-btn-color: var(--bs-white);
       --bs-btn-bg: var(--bd-violet-bg);
       --bs-btn-border-color: var(--bd-violet-bg);
       --bs-btn-hover-color: var(--bs-white);
-      --bs-btn-hover-bg: #6528e0;
-      --bs-btn-hover-border-color: #6528e0;
+      --bs-btn-hover-bg: #6D28D9;
+      --bs-btn-hover-border-color: #6D28D9;
       --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
       --bs-btn-active-color: var(--bs-btn-hover-color);
-      --bs-btn-active-bg: #5a23c8;
-      --bs-btn-active-border-color: #5a23c8;
+      --bs-btn-active-bg: #6D28D9;
+      --bs-btn-active-border-color: #6D28D9;
     }
 
     .bd-mode-toggle {
@@ -253,18 +255,20 @@
   </svg>
 
   <!-- NAVBAR -->
-  <header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#">Inventarios</a>
+  <header class="navbar sticky-top bg-white flex-md-nowrap p-0 shadow-sm" style="border-bottom: 1px solid #E5E7EB;">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#" style="color: #7C3AED; font-weight: 700;">
+      <i class="bi bi-box-seam-fill me-2"></i>Inventarios
+    </a>
 
     <!-- Usuario logueado (visible en desktop) -->
-    <span class="text-white-50 me-3 d-none d-md-flex align-items-center gap-1 small">
-      <i class="bi bi-person-circle"></i>
+    <span class="text-secondary me-3 d-none d-md-flex align-items-center gap-2 small">
+      <i class="bi bi-person-circle" style="color: #7C3AED;"></i>
       <?php echo htmlspecialchars($_SESSION['usuario']); ?>
     </span>
 
     <ul class="navbar-nav flex-row d-md-none">
       <li class="nav-item text-nowrap">
-        <button class="nav-link px-3 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSearch"
+        <button class="nav-link px-3" style="color: #7C3AED;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSearch"
           aria-controls="navbarSearch" aria-expanded="false" aria-label="Toggle search">
           <svg class="bi" aria-hidden="true">
             <use xlink:href="#search"></use>
@@ -272,7 +276,7 @@
         </button>
       </li>
       <li class="nav-item text-nowrap">
-        <button class="nav-link px-3 text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu"
+        <button class="nav-link px-3" style="color: #7C3AED;" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu"
           aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
           <svg class="bi" aria-hidden="true">
             <use xlink:href="#list"></use>
@@ -287,11 +291,11 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
-        <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu"
+      <div class="sidebar col-md-3 col-lg-2 p-0">
+        <div class="offcanvas-md offcanvas-end" style="background-color: white;" tabindex="-1" id="sidebarMenu"
           aria-labelledby="sidebarMenuLabel">
           <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="sidebarMenuLabel">Inventarios</h5>
+            <h5 class="offcanvas-title" id="sidebarMenuLabel" style="color: #7C3AED; font-weight: 700;">Inventarios</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu"
               aria-label="Close"></button>
           </div>

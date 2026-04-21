@@ -30,12 +30,12 @@ class ClienteModel
   public function create(array $data): array
   {
     try {
-      $stmt = $this->db->prepare("INSERT INTO clientes (nombre, telefono, email, direccion) VALUES (?, ?, ?, ?)");
+      $stmt = $this->db->prepare("INSERT INTO clientes (nombre, apellido_paterno, apellido_materno, rfc) VALUES (?, ?, ?, ?)");
       $stmt->execute([
         $data['nombre'],
-        $data['telefono'] ?? '',
-        $data['email'] ?? '',
-        $data['direccion'] ?? ''
+        $data['apellido_paterno'] ?? '',
+        $data['apellido_materno'] ?? '',
+        $data['rfc'] ?? ''
       ]);
       return ['status' => 'ok', 'message' => 'Cliente registrado correctamente.'];
     } catch (\Throwable $e) {
@@ -46,12 +46,12 @@ class ClienteModel
   public function update(int $id, array $data): array
   {
     try {
-      $stmt = $this->db->prepare("UPDATE clientes SET nombre = ?, telefono = ?, email = ?, direccion = ? WHERE id_cliente = ?");
+      $stmt = $this->db->prepare("UPDATE clientes SET nombre = ?, apellido_paterno = ?, apellido_materno = ?, rfc = ? WHERE id_cliente = ?");
       $stmt->execute([
         $data['nombre'],
-        $data['telefono'] ?? '',
-        $data['email'] ?? '',
-        $data['direccion'] ?? '',
+        $data['apellido_paterno'] ?? '',
+        $data['apellido_materno'] ?? '',
+        $data['rfc'] ?? '',
         $id
       ]);
       return ['status' => 'ok', 'message' => 'Cliente actualizado correctamente.'];

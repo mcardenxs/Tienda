@@ -58,7 +58,7 @@ function guardarCliente() {
     }
 
     $.ajax({
-        url: "insertar_cliente.php",
+        url: "/clientes/guardar",
         type: "POST",
         data: {
             nombre: nombre,
@@ -108,7 +108,7 @@ function actualizarCliente() {
     }
 
     $.ajax({
-        url: "actualizar_cliente.php",
+        url: "/clientes/actualizar",
         type: "POST",
         data: {
             id_cliente: id,
@@ -140,7 +140,7 @@ function eliminarCliente(id) {
     }
 
     $.ajax({
-        url: "eliminar_cliente.php",
+        url: "/clientes/eliminar",
         type: "POST",
         data: { id_cliente: id },
         dataType: "json",

@@ -18,19 +18,19 @@
       <div class="row g-3">
         <div class="col-md-6">
           <label class="form-label">Nombre</label>
-          <input type="text" class="form-control" id="inputNombreCliente">
+          <input type="text" class="form-control" id="inputNombre">
         </div>
         <div class="col-md-6">
-          <label class="form-label">Teléfono</label>
-          <input type="text" class="form-control" id="inputTelefonoCliente">
+          <label class="form-label">Apellido Paterno</label>
+          <input type="text" class="form-control" id="inputApPaterno">
         </div>
         <div class="col-md-6">
-          <label class="form-label">Email</label>
-          <input type="email" class="form-control" id="inputEmailCliente">
+          <label class="form-label">Apellido Materno</label>
+          <input type="text" class="form-control" id="inputApMaterno">
         </div>
         <div class="col-md-6">
-          <label class="form-label">Dirección</label>
-          <input type="text" class="form-control" id="inputDireccionCliente">
+          <label class="form-label">RFC</label>
+          <input type="text" class="form-control" id="inputRFC">
         </div>
       </div>
       <div class="mt-4 d-flex gap-2">
@@ -51,9 +51,9 @@
         <tr>
           <th>ID</th>
           <th>Nombre</th>
-          <th>Teléfono</th>
-          <th>Email</th>
-          <th>Dirección</th>
+          <th>Apellido Paterno</th>
+          <th>Apellido Materno</th>
+          <th>RFC</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -62,11 +62,11 @@
             <tr>
               <td><span class="badge bg-light text-primary"><?php echo $c['id_cliente']; ?></span></td>
               <td><strong><?php echo htmlspecialchars($c['nombre']); ?></strong></td>
-              <td><?php echo htmlspecialchars($c['telefono'] ?? '-'); ?></td>
-              <td><?php echo htmlspecialchars($c['email'] ?? '-'); ?></td>
-              <td><?php echo htmlspecialchars($c['direccion'] ?? '-'); ?></td>
+              <td><?php echo htmlspecialchars($c['apellido_paterno'] ?? '-'); ?></td>
+              <td><?php echo htmlspecialchars($c['apellido_materno'] ?? '-'); ?></td>
+              <td><?php echo htmlspecialchars($c['rfc'] ?? '-'); ?></td>
               <td>
-                <button class="btn btn-sm btn-warning" onclick="editarCliente(<?php echo $c['id_cliente']; ?>, '<?php echo addslashes($c['nombre']); ?>', '<?php echo addslashes($c['telefono'] ?? ''); ?>', '<?php echo addslashes($c['email'] ?? ''); ?>', '<?php echo addslashes($c['direccion'] ?? ''); ?>')">
+                <button class="btn btn-sm btn-warning" onclick="editarCliente(<?php echo $c['id_cliente']; ?>, '<?php echo addslashes($c['nombre']); ?>', '<?php echo addslashes($c['apellido_paterno'] ?? ''); ?>', '<?php echo addslashes($c['apellido_materno'] ?? ''); ?>', '<?php echo addslashes($c['rfc'] ?? ''); ?>')">
                   <i class="bi bi-pencil"></i>
                 </button>
                 <button class="btn btn-sm btn-danger" onclick="eliminarCliente(<?php echo $c['id_cliente']; ?>)">

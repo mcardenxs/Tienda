@@ -51,7 +51,7 @@ class Session
   {
     if (!self::isLoggedIn()) {
       self::destroy();
-      header("Location: /Tienda/public/");
+      header("Location: /Tienda/public/login");
       exit();
     }
   }

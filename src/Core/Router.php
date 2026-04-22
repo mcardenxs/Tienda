@@ -23,22 +23,16 @@ class Router
     $method = strtoupper($method);
     $uri = $this->normalizePath($uri);
 
-    // Debug info
     error_log("Dispatch: $method $uri");
+    error_log("Available routes: " . json_encode(array_keys($this->routes[$method] ?? [])));
 
     if (isset($this->routes[$method][$uri])) {
       [$controller, $action] = $this->routes[$method][$uri];
+      error_log("Matched route: $controller::$action");
       $this->callController($controller, $action);
     } else {
-      // Try without leading slash
-      $uriNoSlash = ltrim($uri, '/');
-      if (isset($this->routes[$method][$uriNoSlash])) {
-        [$controller, $action] = $this->routes[$method][$uriNoSlash];
-        $this->callController($controller, $action);
-      } else {
-        http_response_code(404);
-        echo "Página no encontrada: $uri";
-      }
+      http_response_code(404);
+      echo "Página no encontrada: $uri";
     }
   }
 

@@ -1,55 +1,71 @@
-<div class="productos-section">
-  <div class="d-flex justify-content-between align-items-center mb-4">
+<div class="page-header">
+  <div class="header-content">
     <div>
-      <h4 class="mb-1">Productos</h4>
-      <p class="text-muted small mb-0">Administra tu inventario</p>
+      <h1 class="page-title">Productos</h1>
+      <p class="page-subtitle">Administra tu inventario de productos</p>
     </div>
-    <button class="btn btn-primary" onclick="toggleFormProducto()">
-      <i class="bi bi-plus-lg me-2"></i>Nuevo
+    <button class="btn-primary" onclick="toggleFormProducto()">
+      <i class="bi bi-plus-lg"></i>
+      <span>Nuevo Producto</span>
     </button>
   </div>
+</div>
 
-  <div id="formRegistroProducto" style="display: none;" class="card mb-4">
-    <div class="card-header">
-      <h5 id="tituloFormProducto" class="mb-0">Nuevo Producto</h5>
-    </div>
-    <div class="card-body">
-      <input type="hidden" id="inputIdProducto" value="">
-      <div class="row g-3">
-        <div class="col-md-4">
-          <label class="form-label">Nombre</label>
-          <input type="text" class="form-control" id="inputNombreProducto">
-        </div>
-        <div class="col-md-3">
-          <label class="form-label">Cantidad</label>
-          <input type="number" class="form-control" id="inputCantidad" min="0">
-        </div>
-        <div class="col-md-3">
-          <label class="form-label">Precio</label>
-          <input type="number" class="form-control" id="inputPrecio" min="0" step="0.01">
-        </div>
-        <div class="col-md-2">
-          <label class="form-label">Categoría</label>
-          <input type="text" class="form-control" id="inputCategoria">
-        </div>
-      </div>
-      <div class="mt-4 d-flex gap-2">
-        <button class="btn btn-success" id="btnGuardarProducto" onclick="guardarProducto()">
-          <i class="bi bi-check-lg me-1"></i>Guardar
-        </button>
-        <button class="btn btn-secondary" onclick="cancelarFormProducto()">
-          Cancelar
-        </button>
-      </div>
-      <div id="mensajeRegistroProducto" class="mt-3"></div>
-    </div>
+<div id="formRegistroProducto" class="form-panel" style="display: none;">
+  <div class="form-panel-header">
+    <h3 id="tituloFormProducto">Nuevo Producto</h3>
+    <button class="btn-close-panel" onclick="cancelarFormProducto()">
+      <i class="bi bi-x"></i>
+    </button>
   </div>
+  <div class="form-panel-body">
+    <input type="hidden" id="inputIdProducto" value="">
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" for="inputNombreProducto">Nombre</label>
+        <input type="text" class="form-input" id="inputNombreProducto" placeholder="Nombre del producto" required>
+        <span class="form-error">El nombre es obligatorio</span>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inputCantidad">Cantidad</label>
+        <input type="number" class="form-input" id="inputCantidad" min="0" placeholder="0" required>
+        <span class="form-error">La cantidad es obligatoria</span>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inputPrecio">Precio</label>
+        <input type="number" class="form-input" id="inputPrecio" min="0" step="0.01" placeholder="0.00" required>
+        <span class="form-error">El precio es obligatorio</span>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inputCategoria">Categoría</label>
+        <input type="text" class="form-input" id="inputCategoria" placeholder="Categoría" required>
+        <span class="form-error">La categoría es obligatoria</span>
+      </div>
+    </div>
+    <div class="form-actions">
+      <button class="btn-save" id="btnGuardarProducto" onclick="guardarProducto()">
+        <i class="bi bi-check-lg"></i>
+        <span>Guardar</span>
+      </button>
+      <button class="btn-cancel" onclick="cancelarFormProducto()">
+        <span>Cancelar</span>
+      </button>
+    </div>
+    <div id="mensajeRegistroProducto"></div>
+  </div>
+</div>
 
-  <div class="table-responsive">
-    <table class="table table-hover" id="tablaProductos">
+<div class="search-bar">
+  <i class="bi bi-search"></i>
+  <input type="text" id="buscarProducto" placeholder="Buscar por nombre, categoría..." onkeyup="filtrarTabla('tablaProductos', this.value)">
+</div>
+
+<div class="table-container">
+  <div class="table-wrapper">
+    <table class="data-table" id="tablaProductos">
       <thead>
         <tr>
-          <th>ID</th>
+          <th style="cursor: default;">ID</th>
           <th>Nombre</th>
           <th>Cantidad</th>
           <th>Precio</th>
@@ -58,32 +74,41 @@
         </tr>
       </thead>
       <tbody>
-        <?php if (isset($productos)): foreach ($productos as $r): ?>
-            <tr>
-              <td><span class="badge bg-light text-primary"><?php echo $r['id']; ?></span></td>
-              <td><strong><?php echo htmlspecialchars($r['nombre']); ?></strong></td>
-              <td>
-                <span class="badge bg-info text-white">
-                  <?php echo $r['cantidad']; ?>
-                </span>
-              </td>
-              <td>
-                <span class="fw-bold text-success">$<?php echo number_format($r['precio'], 2); ?></span>
-              </td>
-              <td>
-                <span class="badge bg-secondary"><?php echo htmlspecialchars($r['categoria']); ?></span>
-              </td>
-              <td>
-                <button class="btn btn-sm btn-warning" onclick="editarProducto(<?php echo $r['id']; ?>, '<?php echo addslashes($r['nombre']); ?>', <?php echo $r['cantidad']; ?>, <?php echo $r['precio']; ?>, '<?php echo addslashes($r['categoria']); ?>')">
+        <?php if (isset($productos) && count($productos) > 0): foreach ($productos as $r): ?>
+          <tr>
+            <td><span class="badge-id"><?php echo $r['id']; ?></span></td>
+            <td><strong><?php echo htmlspecialchars($r['nombre']); ?></strong></td>
+            <td>
+              <span class="badge-stock <?php echo $r['cantidad'] < 5 ? 'low' : ''; ?>">
+                <?php echo $r['cantidad']; ?>
+              </span>
+            </td>
+            <td><span class="price">$<?php echo number_format($r['precio'], 2); ?></span></td>
+            <td><span class="badge-category"><?php echo htmlspecialchars($r['categoria']); ?></span></td>
+            <td>
+              <div class="action-buttons">
+                <button class="btn-action btn-edit" data-tooltip="Editar" onclick="editarProducto(<?php echo $r['id']; ?>, '<?php echo addslashes($r['nombre']); ?>', <?php echo $r['cantidad']; ?>, <?php echo $r['precio']; ?>, '<?php echo addslashes($r['categoria']); ?>')">
                   <i class="bi bi-pencil"></i>
                 </button>
-                <button class="btn btn-sm btn-danger" onclick="eliminarProducto(<?php echo $r['id']; ?>)">
+                <button class="btn-action btn-delete" data-tooltip="Eliminar" onclick="eliminarProducto(<?php echo $r['id']; ?>)">
                   <i class="bi bi-trash"></i>
                 </button>
-              </td>
-            </tr>
-        <?php endforeach;
-        endif; ?>
+              </div>
+            </td>
+          </tr>
+        <?php endforeach; else: ?>
+          <tr>
+            <td colspan="6">
+              <div class="empty-state">
+                <div class="empty-state-icon">
+                  <i class="bi bi-box-seam"></i>
+                </div>
+                <h3 class="empty-state-title">No hay productos</h3>
+                <p class="empty-state-text">Comienza agregando tu primer producto al inventario</p>
+              </div>
+            </td>
+          </tr>
+        <?php endif; ?>
       </tbody>
     </table>
   </div>

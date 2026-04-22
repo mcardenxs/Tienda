@@ -1,24 +1,24 @@
-/* ====================================
-   DESIGN SYSTEM - COLORS & VARIABLES
-   ==================================== */
 :root {
-    --primary: #7C3AED;
-    --primary-dark: #6D28D9;
-    --primary-light: #A78BFA;
-    --primary-lighter: #EDE9FE;
-    --secondary: #8B5CF6;
+    --primary: #6366F1;
+    --primary-dark: #4F46E5;
+    --primary-light: #818CF8;
+    --primary-lighter: #EEF2FF;
+    --secondary: #EC4899;
     --success: #10B981;
     --danger: #EF4444;
     --warning: #F59E0B;
     --info: #06B6D4;
-    --light: #F9FAFB;
-    --dark: #1F2937;
-    --border: #E5E7EB;
+    --light: #F8FAFC;
+    --dark: #0F172A;
+    --border: #E2E8F0;
+    --muted: #94A3B8;
+    --surface: #FFFFFF;
+    --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+    --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -1px rgba(15, 23, 42, 0.04);
+    --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(15, 23, 42, 0.04);
+    --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 10px 10px -5px rgba(15, 23, 42, 0.04);
 }
 
-/* ====================================
-   GLOBAL STYLES
-   ==================================== */
 * {
     margin: 0;
     padding: 0;
@@ -26,77 +26,101 @@
 }
 
 body {
-    font-family: 'Inter', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     background-color: var(--light);
     color: var(--dark);
     line-height: 1.6;
     font-size: 0.9375rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* ====================================
-   NAVIGATION & HEADER
-   ==================================== */
+::selection {
+    background-color: var(--primary);
+    color: white;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--light);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--muted);
+}
+
+/* Navigation & Header */
 .navbar {
-    background: white !important;
+    background: var(--surface) !important;
     border-bottom: 1px solid var(--border);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    box-shadow: var(--shadow-sm);
 }
 
 .navbar-brand {
     color: var(--primary) !important;
     font-weight: 700;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     letter-spacing: -0.01em;
 }
 
 .navbar .text-white-50 {
     color: var(--dark) !important;
-    opacity: 0.8;
+    opacity: 0.7;
 }
 
-/* ====================================
-   SIDEBAR
-   ==================================== */
+/* Sidebar */
 .sidebar {
-    background-color: white;
+    background-color: var(--surface);
     border-right: 1px solid var(--border);
 }
 
 .sidebar .nav-link {
     color: var(--dark);
     font-weight: 500;
-    transition: all 0.2s ease;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     border-left: 3px solid transparent;
     padding-left: 1rem !important;
+    border-radius: 6px;
+    margin: 2px 8px;
 }
 
 .sidebar .nav-link:hover {
-    background-color: var(--primary-lighter);
+    background: linear-gradient(135deg, var(--primary-lighter) 0%, rgba(99, 102, 241, 0.05) 100%);
     color: var(--primary);
 }
 
 .sidebar .nav-link.active {
-    background-color: var(--primary-lighter);
+    background: linear-gradient(135deg, var(--primary-lighter) 0%, rgba(99, 102, 241, 0.08) 100%);
     color: var(--primary);
     border-left-color: var(--primary);
+    font-weight: 600;
 }
 
 .sidebar .nav-link .bi {
     width: 1.25rem;
     height: 1.25rem;
+    opacity: 0.8;
 }
 
 .sidebar-heading {
-    color: #9CA3AF;
-    font-size: 0.75rem;
+    color: var(--muted);
+    font-size: 0.6875rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
+    padding: 0.5rem 1rem;
 }
 
-/* ====================================
-   LOGIN PAGE
-   ==================================== */
+/* Login Page */
 .login-wrapper {
     width: 100%;
     max-width: 400px;
@@ -104,23 +128,42 @@ body {
 }
 
 .login-card {
-    background: white;
-    border: none;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: var(--shadow-xl);
+    overflow: hidden;
+    position: relative;
+}
+
+.login-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
 }
 
 .login-header {
-    padding: 2rem 2rem 1.5rem;
+    padding: 2.5rem 2rem 2rem;
     text-align: center;
-    border-bottom: 2px solid var(--primary-lighter);
+    background: linear-gradient(180deg, var(--primary-lighter) 0%, transparent 100%);
 }
 
 .login-header h4 {
     font-weight: 700;
     margin: 0;
-    color: var(--primary);
-    font-size: 1.5rem;
+    color: var(--dark);
+    font-size: 1.375rem;
+    letter-spacing: -0.02em;
+}
+
+.login-header p {
+    color: var(--muted);
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
 }
 
 .login-body {
@@ -128,235 +171,277 @@ body {
 }
 
 .btn-login {
-    background: var(--primary);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
     color: white;
     border: none;
-    padding: 0.85rem;
-    border-radius: 6px;
+    padding: 0.875rem;
+    border-radius: 10px;
     font-weight: 600;
     width: 100%;
     margin-top: 1.5rem;
-    transition: all 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
 }
 
 .btn-login:hover {
-    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.45);
 }
 
-/* ====================================
-   FORMS & INPUTS
-   ==================================== */
+.btn-login:active {
+    transform: translateY(0);
+}
+
+/* Forms & Inputs */
 .form-label {
-    font-weight: 500;
+    font-weight: 600;
     color: var(--dark);
-    font-size: 0.85rem;
+    font-size: 0.8125rem;
     margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
 }
 
 .form-control,
 .form-select {
     border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 0.625rem 0.875rem;
-    transition: all 0.2s ease;
-    font-size: 0.9rem;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.9375rem;
+    background: var(--surface);
 }
 
 .form-control:focus,
 .form-select:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+    outline: none;
 }
 
-/* ====================================
-   BUTTONS
-   ==================================== */
+.form-control::placeholder {
+    color: var(--muted);
+}
+
+/* Buttons */
 .btn-primary {
-    background-color: var(--primary);
-    border-color: var(--primary);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    border: none;
     color: white;
     font-weight: 600;
-    border-radius: 6px;
-    transition: all 0.2s ease;
+    border-radius: 10px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.25);
 }
 
 .btn-primary:hover {
-    background-color: var(--primary-dark);
-    border-color: var(--primary-dark);
+    background: linear-gradient(135deg, var(--primary-dark) 0%, #4338CA 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
+    color: white;
 }
 
 .btn-success {
-    background-color: var(--success);
-    border-color: var(--success);
+    background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
+    border: none;
+    color: white;
     font-weight: 600;
-    border-radius: 6px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
 }
 
 .btn-success:hover {
-    background-color: #059669;
-    border-color: #059669;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+    color: white;
 }
 
 .btn-danger {
-    background-color: var(--danger);
-    border-color: var(--danger);
+    background: linear-gradient(135deg, var(--danger) 0%, #DC2626 100%);
+    border: none;
+    color: white;
     font-weight: 600;
-    border-radius: 6px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.25);
 }
 
 .btn-danger:hover {
-    background-color: #DC2626;
-    border-color: #DC2626;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.35);
+    color: white;
 }
 
 .btn-warning {
-    background-color: var(--warning);
-    border-color: var(--warning);
+    background: linear-gradient(135deg, var(--warning) 0%, #D97706 100%);
+    border: none;
     color: white;
     font-weight: 600;
-    border-radius: 6px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.25);
 }
 
 .btn-warning:hover {
-    background-color: #D97706;
-    border-color: #D97706;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
     color: white;
 }
 
 .btn-secondary {
-    background-color: #6B7280;
-    border-color: #6B7280;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--dark);
     font-weight: 600;
-    border-radius: 6px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
 }
 
 .btn-secondary:hover {
-    background-color: #4B5563;
-    border-color: #4B5563;
+    background: var(--light);
+    border-color: var(--muted);
+    color: var(--dark);
 }
 
-/* ====================================
-   CARDS & CONTAINERS
-   ==================================== */
+.btn-sm {
+    padding: 0.5rem 0.875rem;
+    font-size: 0.8125rem;
+    border-radius: 8px;
+}
+
+/* Cards & Containers */
 .card {
     border: 1px solid var(--border);
-    border-radius: 8px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
-    transition: all 0.2s ease;
+    border-radius: 16px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--surface);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-md);
 }
 
 .card-header {
     background-color: transparent;
     border-bottom: 1px solid var(--border);
-    padding: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    font-weight: 600;
 }
 
 .card-body {
-    padding: 1.25rem;
+    padding: 1.5rem;
 }
 
-/* ====================================
-   TABLES
-   ==================================== */
+/* Tables */
 .table {
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
     font-size: 0.9rem;
+    width: 100%;
 }
 
 .table thead {
-    background-color: var(--primary-lighter);
+    background: linear-gradient(180deg, var(--primary-lighter) 0%, rgba(99, 102, 241, 0.03) 100%);
 }
 
 .table thead th {
-    background-color: var(--primary-lighter);
     color: var(--primary-dark);
     font-weight: 700;
     border: none;
-    padding: 1rem 0.875rem;
-    font-size: 0.85rem;
-    font-weight: 600;
+    padding: 1rem 1.25rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .table tbody td {
     border-color: var(--border);
-    padding: 0.875rem 0.875rem;
+    padding: 1rem 1.25rem;
     vertical-align: middle;
+    background: var(--surface);
 }
 
 .table tbody tr {
-    transition: background-color 0.2s ease;
+    transition: all 0.2s ease;
 }
 
-.table tbody tr:hover {
-    background-color: var(--light);
+.table tbody tr:hover td {
+    background: var(--light);
 }
 
-.table-striped > tbody > tr:nth-of-type(odd) {
-    background-color: transparent;
+.table tbody tr td:first-child {
+    border-radius: 10px 0 0 10px;
 }
 
-.table-striped > tbody > tr:nth-of-type(even) {
-    background-color: rgba(124, 58, 237, 0.02);
+.table tbody tr td:last-child {
+    border-radius: 0 10px 10px 0;
 }
 
-/* ====================================
-   SECTIONS
-   ==================================== */
+/* Sections */
 .clientes-section,
 .productos-section {
-    background: white;
-    border-radius: 8px;
+    background: var(--surface);
+    border-radius: 16px;
     padding: 2rem;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
 }
 
 .clientes-section h4,
 .productos-section h4 {
     color: var(--dark);
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 1.375rem;
     margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
 }
 
 .clientes-section h5,
 .productos-section h5 {
     color: var(--dark);
     font-weight: 700;
-    font-size: 1.125rem;
+    font-size: 1.0625rem;
 }
 
-/* ====================================
-   ALERTS
-   ==================================== */
+/* Badges */
+.badge {
+    padding: 0.375rem 0.75rem;
+    font-weight: 600;
+    font-size: 0.75rem;
+    border-radius: 6px;
+}
+
+/* Alerts */
 .alert {
     border: none;
-    border-radius: 8px;
-    padding: 1rem;
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    border-left: 4px solid;
 }
 
 .alert-danger {
-    background-color: #FEE2E2;
+    background-color: #FEF2F2;
     color: #991B1B;
+    border-left-color: var(--danger);
 }
 
 .alert-success {
-    background-color: #DCFCE7;
+    background-color: #F0FDF4;
     color: #15803D;
+    border-left-color: var(--success);
 }
 
 .alert-warning {
-    background-color: #FEF3C7;
+    background-color: #FFFBEB;
     color: #92400E;
+    border-left-color: var(--warning);
 }
 
 .alert-info {
-    background-color: #CFFAFE;
+    background-color: #ECFEFF;
     color: #164E63;
+    border-left-color: var(--info);
 }
 
-/* ====================================
-   ICONS
-   ==================================== */
+/* Icons */
 .bi {
     display: inline-block;
     width: 1rem;
@@ -364,9 +449,36 @@ body {
     vertical-align: -0.125em;
 }
 
-/* ====================================
-   RESPONSIVE
-   ==================================== */
+/* Utilities */
+.text-primary {
+    color: var(--primary) !important;
+}
+
+.text-muted {
+    color: var(--muted) !important;
+}
+
+.text-success {
+    color: var(--success) !important;
+}
+
+.text-danger {
+    color: var(--danger) !important;
+}
+
+.bg-light {
+    background-color: var(--light) !important;
+}
+
+.bg-primary {
+    background-color: var(--primary) !important;
+}
+
+.border-primary {
+    border-color: var(--primary) !important;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
     .sidebar {
         position: static;
@@ -379,91 +491,19 @@ body {
 
     .clientes-section,
     .productos-section {
-        padding: 1rem;
+        padding: 1.25rem;
+        border-radius: 12px;
     }
 
     .table {
-        font-size: 0.85rem;
+        font-size: 0.8125rem;
     }
 
     .table thead th {
-        padding: 0.75rem 0.5rem;
+        padding: 0.75rem;
     }
 
     .table tbody td {
-        padding: 0.75rem 0.5rem;
+        padding: 0.75rem;
     }
-
-    .btn-sm {
-        padding: 0.4rem 0.6rem;
-        font-size: 0.75rem;
-    }
-}
-
-/* ====================================
-   UTILITIES
-   ==================================== */
-.text-primary {
-    color: var(--primary) !important;
-}
-
-.text-muted {
-    color: #9CA3AF !important;
-}
-
-.bg-light {
-    background-color: var(--light) !important;
-}
-
-.border-primary {
-    border-color: var(--primary) !important;
-}
-
-.d-flex {
-    display: flex;
-}
-
-.align-items-center {
-    align-items: center;
-}
-
-.justify-content-between {
-    justify-content: space-between;
-}
-
-.gap-2 {
-    gap: 0.5rem;
-}
-
-.gap-3 {
-    gap: 1rem;
-}
-
-.mb-0 {
-    margin-bottom: 0;
-}
-
-.mb-2 {
-    margin-bottom: 0.5rem;
-}
-
-.mb-3 {
-    margin-bottom: 1rem;
-}
-
-.mt-3 {
-    margin-top: 1rem;
-}
-
-.p-3 {
-    padding: 1rem;
-}
-
-.py-5 {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-}
-
-.small {
-    font-size: 0.85rem;
 }

@@ -67,4 +67,10 @@ class Session
     self::start();
     return $_SESSION['rol'] ?? null;
   }
+
+  public static function getUserId(): ?int
+  {
+    self::start();
+    return $_SESSION['usuario_id'] ?? null;
+  }
 }

@@ -46,7 +46,7 @@ class ClienteController extends Controller
   {
     Session::requireAuth();
 
-    $id = (int) $this->getInput('id');
+    $id = (int) $this->getInput('id_cliente');
     $data = $this->getAllInputs();
     $result = $this->clienteModel->update($id, $data);
     $this->json($result);
@@ -56,7 +56,7 @@ class ClienteController extends Controller
   {
     Session::requireAuth();
 
-    $id = (int) $this->getInput('id');
+    $id = (int) $this->getInput('id_cliente');
     $result = $this->clienteModel->delete($id);
     $this->json($result);
   }

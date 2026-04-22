@@ -33,6 +33,7 @@ class AuthController extends Controller
       $usuario = $this->usuarioModel->findByUsername($username);
 
       if ($usuario && $this->usuarioModel->verifyPassword($password, $usuario['password'])) {
+        Session::set('usuario_id', $usuario['id']);
         Session::set('usuario', $usuario['username']);
         Session::set('rol', $usuario['rol']);
         $this->redirect('/Tienda/public/');
